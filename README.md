@@ -1,1 +1,1 @@
-[GitHub](https://BeksultanSagyndyk.github.io)
+[my blog](https://BeksultanSagyndyk.github.io)
