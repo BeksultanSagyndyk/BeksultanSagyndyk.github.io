@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Self-attention Does Not Need O(n^2) Memory"
+title: "Paper review: Self-attention Does Not Need O(n^2) Memory"
 subtitle: "How can the memory efficiency of self-attention be increased?"
 gh-repo: BeksultanSagyndyk/BeksultanSagyndyk.github.io
 gh-badge: [star, follow]
