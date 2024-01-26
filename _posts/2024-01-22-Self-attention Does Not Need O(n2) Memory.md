@@ -8,6 +8,7 @@ tags: [LLM, efficiency, long input transformers]
 comments: true
 author: Beksultan Sagyndyk
 ---
+<img width="641" alt="Screenshot 2024-01-26 at 17 56 17" src="https://github.com/BeksultanSagyndyk/BeksultanSagyndyk.github.io/assets/46630209/bac91768-4623-4516-bcdf-b381f8d20242">
 
 In the paper Self-attention Does Not Need O(n^2) Memory, the Google team introduces simple algorithms for attention and self-attention that require only constant memory and logarithmic memory, respectively. At a sequence length of 16384, the approach can reduce the self-attention memory overhead by 59x for inference and by 32x for differentiation
 
