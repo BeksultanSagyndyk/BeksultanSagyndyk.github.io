@@ -3,7 +3,7 @@ layout: post
 title: "Self-attention Does Not Need O(n^2) Memory"
 subtitle: "How can the memory efficiency of self-attention be increased?"
 gh-repo: BeksultanSagyndyk/BeksultanSagyndyk.github.io
-gh-badge: [star, fork, follow]
+gh-badge: [star, follow]
 tags: [LLM, efficiency, long input transformers]
 comments: true
 author: Beksultan Sagyndyk
