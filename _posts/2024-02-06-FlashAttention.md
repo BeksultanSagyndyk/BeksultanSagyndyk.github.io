@@ -8,10 +8,15 @@ tags: [efficiency, long input transformers]
 comments: true
 author: Beksultan Sagyndyk
 ---
+[VIDEO](https://www.youtube.com/live/gMOAud7hZg4?si=VTrG_Yc53011jMw-)
+
+[PAPER](https://arxiv.org/abs/2205.14135)
 
 ![Screenshot 2024-02-06](https://github.com/BeksultanSagyndyk/BeksultanSagyndyk.github.io/assets/46630209/6ca75c46-0ab3-4910-b780-6bab0716a939)
 
 **FlashAttention** - is not an approximate attention method; it's more about carefully accounting for reads and writes to different levels of fast and slow memory.
+
+Surprisingly, the time we spend on computation is much smaller than the time we spend on reading and writing to memory - [proof](https://arxiv.org/abs/2007.00072).
 
 ![Screenshot 2024-02-07](https://github.com/BeksultanSagyndyk/BeksultanSagyndyk.github.io/assets/46630209/f5a57483-e7a1-4ea2-97b2-ba3a02123382)
 
@@ -34,8 +39,13 @@ GPU has Memory Hierarchy. GPUs have a massive number of threads to execute an op
 ### Kernel fusion
 The most common approach to accelerate memory-bound operations is kernel fusion: if there are multiple operations applied to the same input, the input can be loaded once from HBM, instead of multiple times for each operation.
 
+
 ### Standard Attention Implementation
+
 ![Screenshot 2024-02-07](https://github.com/BeksultanSagyndyk/BeksultanSagyndyk.github.io/assets/46630209/3195bcde-6e9c-478b-a70f-9349dc1ce4e7)
+
+<img width="966" alt="Screenshot 2024-02-07 at 17 47 46" src="https://github.com/BeksultanSagyndyk/BeksultanSagyndyk.github.io/assets/46630209/07b3313e-c4c6-4bd6-9e89-16704ec2552b">
+as we can see from the picture Q,V and O a way smaller than inner matrices , which in NxN(quadratic complexity on seq length).
 
 **Algorithm**
 Require: Matrices Q, K, V ∈ R in HBM.
