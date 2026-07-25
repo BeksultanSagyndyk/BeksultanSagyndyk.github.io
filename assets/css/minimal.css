@@ -137,7 +137,26 @@ a:hover { color: var(--hover); text-decoration: underline; }
 
 /* --- Home: post list ----------------------------------------------------- */
 
-.home-intro { color: var(--muted); margin: 0 0 28px; font-size: 14px; }
+.home-intro { color: var(--muted); margin: 0 0 22px; font-size: 14px; }
+
+/* compact one-line index for the paper-reviews list */
+.paper-list { margin: 0; padding: 0; list-style: none; }
+.paper-list li {
+  display: flex; align-items: baseline; gap: 16px;
+  padding: 3px 0; line-height: 1.4;
+}
+.paper-list .d {
+  flex: none; width: 84px;
+  color: var(--muted); font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+.paper-list li > a {
+  flex: 1 1 auto; min-width: 0;
+  font-size: 14.5px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.paper-list li > a:hover { color: var(--accent); }
+.paper-list li > a:visited { color: var(--visited); }
 
 .post-list { margin: 0; padding: 0; list-style: none; }
 .post-list li { margin: 0 0 22px; }
