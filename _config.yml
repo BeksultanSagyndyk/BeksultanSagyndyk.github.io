@@ -9,38 +9,23 @@
 # --- Required options --- #
 ############################
 
-# Name of website
-title: Home
+# Name of website (shown in the top-left of the bar)
+title: Beksultan Sagyndyk
 
 # Your name to show in the footer
 author: Beksultan Sagyndyk
+
+# Short tagline shown under your name in the sidebar
+description: "NLP engineer · paper reviews & notes"
 
 ###############################################
 # --- List of links in the navigation bar --- #
 ###############################################
 
+# Links shown in the sidebar nav (below "writing", above "tags").
+# Add or remove freely; external URLs and internal paths both work.
 navbar-links:
-  About Me: "aboutme"
-  Resources:
-    - Linkedin: "https://www.linkedin.com/in/bexultansagyndyk/"
-    - Sota Papers: "https://paperswithcode.com/sota"
-  Author's home: "https://en.wikipedia.org/wiki/Kazakhstan"
-
-################
-# --- Logo --- #
-################
-
-# Image to show in the navigation bar - works best with a square image
-# Remove this parameter if you don't want an image in the navbar
-avatar: "assets/img/Screenshot 2024-01-22 at 19.50.05.png"
-
-# By default, the image is cut into a circle. You can disable this behaviour by setting 'round-avatar: false'
-round-avatar: true
-
-# If you want to have an image logo in the top-left corner instead of having the title of the website,
-# then specify the following parameter
-#title-img: /path/to/image
-
+  about: "aboutme"
 
 #####################################
 # --- Footer social media links --- #
@@ -53,6 +38,7 @@ social-network-links:
   email: "nuxyjlbka@gmail.com"
   github: BeksultanSagyndyk
   linkedin: bexultansagyndyk
+  google-scholar: "7Lt926QAAAAJ"
   kaggle: sagyndykbn
   telegram: yourname
 #  medium: yourname
@@ -108,8 +94,8 @@ feed_show_excerpt: true
 # Whether or not to show a list of tags below each post preview in the feed page
 feed_show_tags: true
 
-# Add a search button to the navbar
-post_search: true
+# Add a search button to the navbar (disabled in the minimal theme)
+post_search: false
 
 # Add a button in the footer to edit the current page. Only works if your website is hosted on GitHub
 edit_page_button: true
