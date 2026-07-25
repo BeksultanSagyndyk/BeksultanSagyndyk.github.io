@@ -11,12 +11,11 @@ layout: base
 {% assign docs = site[page.collection] | sort: 'date' | reverse %}
 
 {% if docs and docs.size > 0 %}
-<ul class="post-list" role="list">
+<ul class="paper-list" role="list">
   {% for doc in docs %}
   <li>
-    <div class="title"><a href="{{ doc.url | relative_url }}">{{ doc.title | strip_html }}</a></div>
-    {% if doc.subtitle %}<div class="sub">{{ doc.subtitle | strip_html }}</div>{% endif %}
-    {% if doc.date %}<div class="meta">{{ doc.date | date: date_format }}</div>{% endif %}
+    <time class="d"{% if doc.date %} datetime="{{ doc.date | date_to_xmlschema }}"{% endif %}>{% if doc.date %}{{ doc.date | date: "%Y-%m-%d" }}{% endif %}</time>
+    <a href="{{ doc.url | relative_url }}" title="{{ doc.title | strip_html | xml_escape }}">{{ doc.title | strip_html }}</a>
   </li>
   {% endfor %}
 </ul>
