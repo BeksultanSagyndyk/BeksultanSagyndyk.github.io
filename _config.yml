@@ -22,10 +22,11 @@ description: "NLP engineer · paper reviews & notes"
 # --- List of links in the navigation bar --- #
 ###############################################
 
-# Links shown in the sidebar nav (below "writing", above "tags").
-# Add or remove freely; external URLs and internal paths both work.
-navbar-links:
-  about: "aboutme"
+# Links shown in the "projects" section of the sidebar.
+# Add as many as you like — each needs a name and a url.
+project-links:
+  - name: "FAIO 2025"
+    url: "https://faio.kz/2025/"
 
 #####################################
 # --- Footer social media links --- #
@@ -247,6 +248,23 @@ paginate: 5
 kramdown:
   input: GFM
 
+# Materials collections — each subsection is its own list of markdown files
+# (works just like paper reviews). Add entries under _mlds/ _math/ _algos/
+# _other/ and they show up automatically on the matching /materials/... page.
+collections:
+  mlds:
+    output: true
+    permalink: /materials/ml-ds/:path/
+  math:
+    output: true
+    permalink: /materials/math/:path/
+  algos:
+    output: true
+    permalink: /materials/algos/:path/
+  other:
+    output: true
+    permalink: /materials/other/:path/
+
 # Default YAML values (more information on Jekyll's site)
 defaults:
   -
@@ -262,6 +280,10 @@ defaults:
       path: "" # any file that's not a post will be a "page" layout by default
     values:
       layout: "page"
+  - { scope: { path: "", type: "mlds" },  values: { layout: "material" } }
+  - { scope: { path: "", type: "math" },  values: { layout: "material" } }
+  - { scope: { path: "", type: "algos" }, values: { layout: "material" } }
+  - { scope: { path: "", type: "other" }, values: { layout: "material" } }
 
 # Exclude these files from production site
 exclude:

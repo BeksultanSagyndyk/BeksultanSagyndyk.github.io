@@ -1,0 +1,25 @@
+---
+layout: base
+---
+
+<header class="post-header">
+  <h1>{{ page.title | strip_html }}</h1>
+  {% if page.subtitle %}<div class="sub">{{ page.subtitle | strip_html }}</div>{% endif %}
+</header>
+
+{% assign date_format = site.date_format | default: "%B %-d, %Y" %}
+{% assign docs = site[page.collection] | sort: 'date' | reverse %}
+
+{% if docs and docs.size > 0 %}
+<ul class="post-list" role="list">
+  {% for doc in docs %}
+  <li>
+    <div class="title"><a href="{{ doc.url | relative_url }}">{{ doc.title | strip_html }}</a></div>
+    {% if doc.subtitle %}<div class="sub">{{ doc.subtitle | strip_html }}</div>{% endif %}
+    {% if doc.date %}<div class="meta">{{ doc.date | date: date_format }}</div>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="home-intro">Nothing here yet.</p>
+{% endif %}

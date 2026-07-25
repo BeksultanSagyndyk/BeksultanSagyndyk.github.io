@@ -85,7 +85,42 @@ a:hover { color: var(--hover); text-decoration: underline; }
 .sidebar nav { display: flex; flex-direction: column; gap: 6px; }
 .sidebar nav a { color: var(--side-text); }
 .sidebar nav a:hover { color: var(--accent); text-decoration: none; }
+/* collapsible "materials" toggle */
+.sidebar nav details.materials > summary {
+  list-style: none; cursor: pointer;
+  color: var(--side-text);
+  display: flex; align-items: center;
+}
+.sidebar nav details.materials > summary::-webkit-details-marker { display: none; }
+.sidebar nav details.materials > summary::before {
+  content: ""; display: inline-block; flex: none;
+  border-left: 4px solid currentColor;
+  border-top: 3.5px solid transparent;
+  border-bottom: 3.5px solid transparent;
+  margin-right: 8px; opacity: 0.55;
+  transition: transform 0.15s ease;
+}
+.sidebar nav details.materials[open] > summary::before { transform: rotate(90deg); }
+.sidebar nav details.materials > summary:hover { color: var(--accent); }
+
+.sidebar nav .subnav {
+  display: flex; flex-direction: column; gap: 5px;
+  margin: 6px 0 2px 5px; padding-left: 11px;
+  border-left: 1px solid var(--side-rule);
+}
+.sidebar nav .subnav a { font-size: 12.5px; color: var(--side-muted); }
+.sidebar nav .subnav a:hover { color: var(--accent); }
+
 .sidebar .rule { height: 1px; background: var(--side-rule); margin: 22px 0; }
+
+/* section headings + generic link lists (projects) */
+.sidebar .heading {
+  font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.09em;
+  color: var(--side-muted); margin-bottom: 10px;
+}
+.sidebar .linklist { display: flex; flex-direction: column; gap: 6px; }
+.sidebar .linklist a { color: var(--side-text); }
+.sidebar .linklist a:hover { color: var(--accent); text-decoration: none; }
 .sidebar .social { display: flex; flex-direction: column; gap: 8px; }
 .sidebar .social a { display: flex; align-items: center; gap: 9px; color: var(--side-muted); }
 .sidebar .social a:hover { color: #fff; text-decoration: none; }
@@ -216,8 +251,11 @@ pre code { background: none; padding: 0; font-size: inherit; }
     padding: 22px 24px;
   }
   .sidebar .tagline { margin-bottom: 14px; }
-  .sidebar nav { flex-flow: row wrap; gap: 6px 18px; }
-  .sidebar .rule { display: none; }
+  .sidebar nav { flex-flow: row wrap; gap: 6px 18px; align-items: center; }
+  .sidebar nav .subnav { flex-flow: row wrap; gap: 6px 12px; margin: 0; padding-left: 0; border-left: none; }
+  .sidebar .heading { display: none; }
+  .sidebar .side-group { margin-top: 12px; }
+  .sidebar .linklist { flex-flow: row wrap; gap: 6px 18px; }
   .sidebar .social { flex-flow: row wrap; gap: 6px 18px; margin-top: 10px; }
   .main { margin-left: 0; padding: 32px 24px 48px; max-width: none; }
   .post-header h1 { font-size: 21px; }
