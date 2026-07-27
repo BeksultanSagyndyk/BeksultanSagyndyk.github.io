@@ -198,6 +198,9 @@ a:hover { color: var(--hover); text-decoration: underline; }
 .post-body a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(8,127,91,0.35); text-underline-offset: 2px; }
 .post-body a:hover { color: var(--hover); text-decoration-color: currentColor; }
 
+/* math — let long display equations scroll instead of overflowing the column */
+mjx-container[jax="CHTML"][display="true"] { overflow-x: auto; overflow-y: hidden; padding: 2px 0; }
+
 /* code */
 code {
   font-family: var(--mono);

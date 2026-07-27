@@ -16,5 +16,8 @@ common-css:
       {% include footer.html %}
     </main>
   </div>
+  {% if content contains '\(' or content contains '\[' or content contains '$$' %}
+    {% include mathjax.html %}
+  {% endif %}
 </body>
 </html>
