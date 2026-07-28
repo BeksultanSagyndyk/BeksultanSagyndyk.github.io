@@ -8,7 +8,7 @@ common-css:
 <html lang="{{ page.language | default: site.language | default: 'en' }}">
 {% include head.html %}
 
-<body>
+<body{% if page.bg-image %} style="--bg-image: url('{{ page.bg-image | relative_url }}'); --bg-image-opacity: {{ page.bg-image-opacity | default: 0.06 }};"{% endif %}>
   <div class="layout">
     {% include sidebar.html %}
     <main class="main">
