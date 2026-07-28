@@ -22,6 +22,12 @@
   --side-muted: #9a9186;   /* rail secondary text */
   --side-rule:  rgba(255,255,255,0.10);  /* rail divider */
 
+  /* Optional faint background picture. Put a file in assets/img/ and set:
+       --bg-image: url("/assets/img/yourfile.jpg");
+     Keep the opacity low (0.04–0.10) so the ivory background still dominates. */
+  --bg-image:         url("/assets/img/mandalorian-bg.jpeg");
+  --bg-image-opacity: 0.06;
+
   --sidebar-w:  228px;     /* width of the dark left rail */
   --main-w:     920px;     /* max width of the content column */
   --read-w:     700px;     /* max text measure inside a post */
@@ -41,6 +47,22 @@ body {
   font-size: var(--fs);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Background picture layer. Sits behind all content (z-index: -1), so its
+   opacity never affects the contrast of text, code, or math above it.
+   Inert while --bg-image is `none`. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: var(--bg-image-opacity);
 }
 
 a { color: var(--text); text-decoration: none; }
