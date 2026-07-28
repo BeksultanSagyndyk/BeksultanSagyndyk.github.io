@@ -28,7 +28,7 @@
        bg-image-opacity: 0.06   # optional, 0.04–0.10 keeps text comfortable
      base.html then sets these variables on <body> for that page only. */
   --bg-image:         none;
-  --bg-image-opacity: 0.2;
+  --bg-image-opacity: 0.06;
 
   --sidebar-w:  228px;     /* width of the dark left rail */
   --main-w:     920px;     /* max width of the content column */
