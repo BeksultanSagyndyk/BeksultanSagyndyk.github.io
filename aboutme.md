@@ -2,6 +2,7 @@
 layout: page
 title: About me
 ref: about
+bg-image: /assets/img/clouds-night-bg.jpg
 ---
 
 I'm Beksultan, a Data Scientist at Yieldmo. Before that, I worked as an ML/NLP researcher at the DeepPavlov lab (MIPT), and as a Senior Data Scientist at companies including Beeline, Provectus, and BTS Digital.
