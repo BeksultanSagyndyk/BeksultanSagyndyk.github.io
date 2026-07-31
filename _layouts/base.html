@@ -12,9 +12,11 @@ common-css:
   <div class="layout">
     {% include sidebar.html %}
     <main class="main">
-      {% include lang-switch.html %}
-      {{ content }}
-      {% include footer.html %}
+      <div class="card">
+        {% include lang-switch.html %}
+        {{ content }}
+        {% include footer.html %}
+      </div>
     </main>
   </div>
   {% if content contains '\(' or content contains '\[' or content contains '$$' %}

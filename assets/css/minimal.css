@@ -4,7 +4,8 @@
    =========================================================================== */
 
 :root {
-  --bg:         #f7f4ec;   /* page background (warm ivory, HN-ish) */
+  --bg:         #f7f4ec;   /* the reading surface — background of the content card */
+  --page-bg:    #e9e2d2;   /* page behind the card; the bg-image shows through here */
   --text:       #22201b;   /* body text (warm near-black) */
   --muted:      #8c8579;   /* dates, taglines, meta (warm grey) */
   --rule:       #e6e0d3;   /* hairline separators (warm) */
@@ -22,13 +23,14 @@
   --side-muted: #9a9186;   /* rail secondary text */
   --side-rule:  rgba(255,255,255,0.10);  /* rail divider */
 
-  /* Faint background picture — off by default, opt in per page. Put a file in
+  /* Background picture — off by default, opt in per page. Put a file in
      assets/img/ and add to that page's front matter:
        bg-image: /assets/img/yourfile.jpg
-       bg-image-opacity: 0.06   # optional, 0.04–0.10 keeps text comfortable
+       bg-image-opacity: 0.85   # optional; the opaque card covers the picture,
+                                # so anything up to 1 stays perfectly readable
      base.html then sets these variables on <body> for that page only. */
   --bg-image:         none;
-  --bg-image-opacity: 0.06;
+  --bg-image-opacity: 0.85;
 
   --sidebar-w:  228px;     /* width of the dark left rail */
   --main-w:     920px;     /* max width of the content column */
@@ -43,7 +45,7 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--page-bg);
   color: var(--text);
   font-family: var(--font);
   font-size: var(--fs);
@@ -51,9 +53,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Background picture layer. Sits behind all content (z-index: -1), so its
-   opacity never affects the contrast of text, code, or math above it.
-   Inert while --bg-image is `none`. */
+/* Background picture layer. Sits behind everything (z-index: -1) and is fully
+   covered by the opaque content card, so it only ever shows in the gutter
+   around the card — text contrast is never affected and bg-image-opacity can
+   safely go as high as 1. Inert while --bg-image is `none`. */
 body::before {
   content: "";
   position: fixed;
@@ -153,19 +156,32 @@ a:hover { color: var(--hover); text-decoration: underline; }
 /* --- Main content column (offset past the rail) -------------------------- */
 
 .main {
-  position: relative;   /* anchor for the language switcher */
   margin-left: var(--sidebar-w);
   max-width: var(--main-w);
-  padding: 56px clamp(28px, 6vw, 88px) 64px;
+  padding: 28px clamp(20px, 3vw, 44px) 44px;   /* this padding is the gutter around the card */
   min-width: 0;
+}
+
+/* --- Content card -------------------------------------------------------- */
+/* Opaque panel holding the header and body of every page. Because it is
+   opaque, the page's background picture only shows in the gutter around it,
+   so a bold picture never costs text legibility. */
+
+.card {
+  position: relative;   /* anchor for the language switcher */
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 40px clamp(22px, 4vw, 56px) 36px;
+  box-shadow: 0 1px 3px rgba(34, 32, 27, 0.06);
 }
 
 /* --- Language switcher (ENG / ҚАЗ pill, top-right of the column) ---------- */
 
 .langsw {
-  position: absolute;
-  top: 22px;
-  right: clamp(28px, 6vw, 88px);
+  position: absolute;   /* top-right inside the card's padding */
+  top: 16px;
+  right: 16px;
   display: inline-grid;
   grid-template-columns: 1fr 1fr;   /* equal halves, so the thumb is exactly 50% */
   align-items: center;
@@ -356,7 +372,9 @@ pre code { background: none; padding: 0; font-size: inherit; }
   .sidebar .side-group { margin-top: 12px; }
   .sidebar .linklist { flex-flow: row wrap; gap: 6px 18px; }
   .sidebar .social { flex-flow: row wrap; gap: 6px 18px; margin-top: 10px; }
-  .main { margin-left: 0; padding: 32px 24px 48px; max-width: none; }
+  .main { margin-left: 0; padding: 12px 10px 28px; max-width: none; }
+  .card { border-radius: 10px; padding: 26px 18px 22px; }
+  .langsw { top: 12px; right: 12px; }
   .langsw { top: 12px; right: 24px; }
   .post-header h1 { font-size: 21px; }
 }
