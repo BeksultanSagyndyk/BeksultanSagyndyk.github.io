@@ -264,6 +264,12 @@ collections:
   other:
     output: true
     permalink: /materials/other/:path/
+  # Kazakh translations of the paper reviews. One file per English post, with a
+  # matching `ref:` so the ENG/ҚАЗ switcher can pair them up. Needs an explicit
+  # `date:` in the front matter — collections don't read dates from filenames.
+  kk_posts:
+    output: true
+    permalink: /kk/:path/
 
 # Default YAML values (more information on Jekyll's site)
 defaults:
@@ -284,6 +290,7 @@ defaults:
   - { scope: { path: "", type: "math" },  values: { layout: "material" } }
   - { scope: { path: "", type: "algos" }, values: { layout: "material" } }
   - { scope: { path: "", type: "other" }, values: { layout: "material" } }
+  - { scope: { path: "", type: "kk_posts" }, values: { layout: "post", lang: "kk" } }
 
 # Exclude these files from production site
 exclude:

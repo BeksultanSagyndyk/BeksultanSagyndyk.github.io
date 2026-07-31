@@ -7,6 +7,7 @@ gh-badge: [star, follow]
 tags: [LLM, efficiency, long input transformers]
 comments: true
 author: Beksultan Sagyndyk
+ref: self-attention-memory
 ---
 
 ![Screenshot 2024-01-26 at 17 56 17](https://github.com/BeksultanSagyndyk/BeksultanSagyndyk.github.io/assets/46630209/bac91768-4623-4516-bcdf-b381f8d20242)

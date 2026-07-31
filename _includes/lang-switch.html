@@ -1,0 +1,31 @@
+{% comment %}
+  ENG / ҚАЗ switcher, top-right of the content column.
+
+  Pairing is by `ref:` in the front matter: the English page and its Kazakh twin
+  carry the same ref. Kazakh files carry `lang: kk` (set automatically for the
+  kk_posts collection in _config.yml); English files need no lang at all.
+
+  Pages with no ref (materials, tags) show ENG as active and ҚАЗ greyed out, so
+  the widget sits in the same place on every page.
+
+  To add a translation: create the Kazakh file with the same `ref:` — the link
+  below starts working on its own, no edit needed here.
+{% endcomment %}
+{% assign cur = page.lang | default: 'en' %}
+{% if page.ref %}
+  {% assign candidates = site.posts | concat: site.kk_posts | concat: site.pages | where: "ref", page.ref %}
+  {% if cur == 'kk' %}
+    {% assign alt = candidates | where_exp: "p", "p.lang != 'kk'" | first %}
+  {% else %}
+    {% assign alt = candidates | where_exp: "p", "p.lang == 'kk'" | first %}
+  {% endif %}
+{% endif %}
+<div class="langsw">
+  {% if cur == 'kk' %}
+    {% if alt %}<a href="{{ alt.url | relative_url }}">ENG</a>{% else %}<span class="off">ENG</span>{% endif %}
+    <span class="on" lang="kk">ҚАЗ</span>
+  {% else %}
+    <span class="on">ENG</span>
+    {% if alt %}<a href="{{ alt.url | relative_url }}" lang="kk">ҚАЗ</a>{% else %}<span class="off" lang="kk">ҚАЗ</span>{% endif %}
+  {% endif %}
+</div>

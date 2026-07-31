@@ -2,8 +2,10 @@
   <a class="name" href="{{ '/' | absolute_url }}">{{ site.title | default: "Home" }}</a>
   {% if site.description %}<div class="tagline">{{ site.description }}</div>{% endif %}
 
+  {% comment %} On Kazakh pages the two translated sections point at their /kk/ copies. {% endcomment %}
+  {% assign kk = false %}{% if page.lang == 'kk' %}{% assign kk = true %}{% endif %}
   <nav>
-    <a href="{{ '/' | relative_url }}">paper reviews</a>
+    <a href="{% if kk %}{{ '/kk/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}">paper reviews</a>
     <details class="materials"{% if page.url contains '/materials/' %} open{% endif %}>
       <summary>materials</summary>
       <div class="subnav">
@@ -13,7 +15,7 @@
         <a href="{{ '/materials/other/' | relative_url }}">Other</a>
       </div>
     </details>
-    <a href="{{ '/aboutme' | relative_url }}">about</a>
+    <a href="{% if kk %}{{ '/kk/aboutme/' | relative_url }}{% else %}{{ '/aboutme' | relative_url }}{% endif %}">about</a>
     <a href="{{ '/tags' | relative_url }}">tags</a>
   </nav>
 

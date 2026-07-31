@@ -6,7 +6,12 @@ layout: base
 
 {{ content }}
 
-{% assign posts = paginator.posts | default: site.posts %}
+{% comment %} Kazakh index (/kk/) lists the kk_posts collection; / stays paginated. {% endcomment %}
+{% if page.lang == 'kk' %}
+  {% assign posts = site.kk_posts | sort: 'date' | reverse %}
+{% else %}
+  {% assign posts = paginator.posts | default: site.posts %}
+{% endif %}
 {% assign date_format = site.date_format | default: "%B %-d, %Y" %}
 
 <ul class="paper-list" role="list">
@@ -18,9 +23,9 @@ layout: base
   {% endfor %}
 </ul>
 
-{% if paginator.total_pages > 1 %}
+{% if paginator %}{% if paginator.total_pages > 1 %}
 <div class="pager">
   {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path | relative_url }}">&larr; newer</a>{% endif %}
   {% if paginator.next_page %}<a href="{{ paginator.next_page_path | relative_url }}">older &rarr;</a>{% endif %}
 </div>
-{% endif %}
+{% endif %}{% endif %}

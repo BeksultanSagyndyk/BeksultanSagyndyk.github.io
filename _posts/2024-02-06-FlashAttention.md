@@ -7,6 +7,7 @@ gh-badge: [star, follow]
 tags: [efficiency, long input transformers]
 comments: true
 author: Beksultan Sagyndyk
+ref: flashattention
 ---
 [VIDEO](https://www.youtube.com/live/gMOAud7hZg4?si=VTrG_Yc53011jMw-)
 
