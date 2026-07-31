@@ -1,12 +1,17 @@
 ---
 layout: page
 title: About me
-subtitle: to do
+subtitle: Data Scientist, NLP engineer
 ---
 
-to do
+## About Me
 
-### My story
+I'm Beksultan, a Data Scientist at Yieldmo. Before that, I worked as an ML/NLP researcher at the DeepPavlov lab (MIPT), and as a Senior Data Scientist at companies including Beeline, Provectus, and BTS Digital.
 
-My name is Beksultan Sagyndyk, and I am an NLP engineer from Almaty, Kazakhstan.
+I also co-lead Horde, a non-profit research collective focused on low-resource languages — we build benchmarks, datasets, and models, along with offline and online arenas for evaluating LLMs.
 
+Since 2024 I've also helped run FAIO, an AI olympiad for school students, where I author problems and judge results.
+
+On the side, I compete on Kaggle (2 silver, 3 bronze medals so far).
+
+I write here to share what I'm learning — blog posts and paper reviews that go deep into the math but stay in plain language.
