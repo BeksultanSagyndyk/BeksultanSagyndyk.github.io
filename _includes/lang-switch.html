@@ -20,12 +20,14 @@
     {% assign alt = candidates | where_exp: "p", "p.lang == 'kk'" | first %}
   {% endif %}
 {% endif %}
-<div class="langsw">
+<div class="langsw" role="group" aria-label="Language">
   {% if cur == 'kk' %}
-    {% if alt %}<a href="{{ alt.url | relative_url }}">ENG</a>{% else %}<span class="off">ENG</span>{% endif %}
+    {% if alt %}<a href="{{ alt.url | relative_url }}" title="English">ENG</a>{% else %}<span class="off">ENG</span>{% endif %}
+    <span class="sep" aria-hidden="true">/</span>
     <span class="on" lang="kk">ҚАЗ</span>
   {% else %}
     <span class="on">ENG</span>
-    {% if alt %}<a href="{{ alt.url | relative_url }}" lang="kk">ҚАЗ</a>{% else %}<span class="off" lang="kk">ҚАЗ</span>{% endif %}
+    <span class="sep" aria-hidden="true">/</span>
+    {% if alt %}<a href="{{ alt.url | relative_url }}" lang="kk" title="Қазақша">ҚАЗ</a>{% else %}<span class="off" lang="kk" title="Аудармасы дайын емес">ҚАЗ</span>{% endif %}
   {% endif %}
 </div>
