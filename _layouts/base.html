@@ -8,7 +8,8 @@ common-css:
 <html lang="{{ page.lang | default: page.language | default: site.language | default: 'en' }}">
 {% include head.html %}
 
-<body{% if page.bg-image %} style="--bg-image: url('{{ page.bg-image | relative_url }}'); --bg-image-opacity: {{ page.bg-image-opacity | default: 0.06 }};"{% endif %}>
+{% comment %} bg-image-opacity is only emitted when the page sets it, so the CSS default applies otherwise. {% endcomment %}
+<body{% if page.bg-image %} style="--bg-image: url('{{ page.bg-image | relative_url }}');{% if page.bg-image-opacity %} --bg-image-opacity: {{ page.bg-image-opacity }};{% endif %}"{% endif %}>
   <div class="layout">
     {% include sidebar.html %}
     <main class="main">
