@@ -1,5 +1,6 @@
 {% comment %}
-  ENG / ҚАЗ switcher, top-right of the content column.
+  ENG / ҚАЗ switcher — a pill toggle with a sliding thumb, top-right of the
+  content column.
 
   Pairing is by `ref:` in the front matter: the English page and its Kazakh twin
   carry the same ref. Kazakh files carry `lang: kk` (set automatically for the
@@ -10,6 +11,11 @@
 
   To add a translation: create the Kazakh file with the same `ref:` — the link
   below starts working on its own, no edit needed here.
+
+  The thumb sits under whichever option matches data-lang. Clicking the other
+  option flips data-lang first so the thumb slides, then navigates once the
+  transition has played (see the script at the bottom). With JS off, or with
+  prefers-reduced-motion, the links navigate immediately as plain links.
 {% endcomment %}
 {% assign cur = page.lang | default: 'en' %}
 {% if page.ref %}
@@ -20,14 +26,34 @@
     {% assign alt = candidates | where_exp: "p", "p.lang == 'kk'" | first %}
   {% endif %}
 {% endif %}
-<div class="langsw" role="group" aria-label="Language">
+<div class="langsw" data-lang="{{ cur }}" role="group" aria-label="Language">
+  <span class="thumb" aria-hidden="true"></span>
   {% if cur == 'kk' %}
-    {% if alt %}<a href="{{ alt.url | relative_url }}" title="English">ENG</a>{% else %}<span class="off">ENG</span>{% endif %}
-    <span class="sep" aria-hidden="true">/</span>
-    <span class="on" lang="kk">ҚАЗ</span>
+    {% if alt %}
+      <a class="opt" data-lang="en" href="{{ alt.url | relative_url }}" title="English">ENG</a>
+    {% else %}
+      <span class="opt off" data-lang="en" title="No English version">ENG</span>
+    {% endif %}
+    <span class="opt" data-lang="kk" lang="kk" aria-current="true">ҚАЗ</span>
   {% else %}
-    <span class="on">ENG</span>
-    <span class="sep" aria-hidden="true">/</span>
-    {% if alt %}<a href="{{ alt.url | relative_url }}" lang="kk" title="Қазақша">ҚАЗ</a>{% else %}<span class="off" lang="kk" title="Аудармасы дайын емес">ҚАЗ</span>{% endif %}
+    <span class="opt" data-lang="en" aria-current="true">ENG</span>
+    {% if alt %}
+      <a class="opt" data-lang="kk" lang="kk" href="{{ alt.url | relative_url }}" title="Қазақша">ҚАЗ</a>
+    {% else %}
+      <span class="opt off" data-lang="kk" lang="kk" title="Аудармасы дайын емес">ҚАЗ</span>
+    {% endif %}
   {% endif %}
 </div>
+<script>
+  (function () {
+    var slow = window.matchMedia('(prefers-reduced-motion: reduce)');
+    document.querySelectorAll('.langsw a.opt').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        if (slow.matches || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+        e.preventDefault();
+        link.closest('.langsw').dataset.lang = link.dataset.lang;
+        setTimeout(function () { window.location.href = link.href; }, 260);
+      });
+    });
+  })();
+</script>
